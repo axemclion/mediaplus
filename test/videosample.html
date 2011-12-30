@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+    </head>
+    <body>
+        <img src = "img.jpg" style ="vertical-align: top" id = "image"/>
+        <img src = "http://www.google.com/intl/en_com/images/srpr/logo2w.png" style ="vertical-align: top" id = "image1"/>
+        <video width="300" height="100" controls preload id="video" tabindex="0" autoplay style = "width : 500px; height : 200px; padding : 1em; margin : 0.5em; border: 0.2em DOTTED RED">
+            <source src="pr6.ogv" type='video/ogg; codecs="theora, vorbis"' />
+        </video>
+        <script>
+            document.getElementById("video").style.width = 200 + parseInt(Math.random() * 300);
+            document.getElementById("video").style.height = 200 + parseInt(Math.random() * 300);
+        </script>
+        <style>
+            #links table {
+                border: SOLID 1px BLACK;
+            }
+            
+            #links table td {
+                padding: 0.5em;
+                border: SOLID 1px BLACK;
+            }
+            
+            #links table th {
+                background-color: #ABCDEF;
+                border: SOLID 1px BLACK;
+                padding: 0.5em;
+            }
+        </style>
+        <div id = 'links' style ="right:0; bottom : 0; position:fixed;background-color : WHITE;">
+            <script src = "../extensions/bookmarklets/install.js?arg=something?arg1=otherthing" type="text/javascript">
+            </script>
+        </div>
+    </body>
+</html>

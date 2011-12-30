@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+    <head>
+    	<title>
+    		Test File 1
+    	</title>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+                font-size: 12px;
+            }
+            
+            p {
+                margin-left: 10px;
+                color: blue;
+                width: 200px;
+                cursor: pointer;
+            }
+            
+            span {
+                color: red;
+                cursor: pointer;
+            }
+            
+            div.abs {
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                left: 220px;
+                top: 35px;
+                background-color: green;
+                cursor: pointer;
+            }
+            
+            #flash1 {
+                background-color: GREEN;
+                height: 200px;
+                width: 200px;
+                padding: 10px;
+                margin: 15px;
+            }
+            
+            #flash2 {
+                margin: 2em;
+                border: BLUE SOLID 1px;
+                float: right;
+            }
+            
+            #video, #flash3 {
+                padding: 10px;
+                margin: 20px;
+                border: SOLID 5px GRAY;
+            }
+        </style>
+    </head>
+    <body style ="margin:auto; width : 80%;">
+        <h3><a href = "javascript:document.getElementsByTagName('head')[0].appendChild(document.createElement('script')).setAttribute('src','../extensions/Bookmarklet.js');">Flash Resizer</a></h3>
+        <div id="result">
+            <h1>The demo page to test FlashPlus</h1>
+        </div>
+        FlashPlus can work with flash movies that are embedded in different ways.
+        <div style ="background-color : blue;">
+            This is just the object tag. No other atributes are specified.<h3>Object: Flash1</h3>
+            <object id = "flash1" data = "flash1.swf" type = "application/x-shockwave-flash">
+                <param name="movie" value="flash1.swf"><param name="quality" value="high">
+            </object>
+        </div><span>find</span>
+        an offset.
+        <div style ="background-color :  GREEN">
+            This DIV floats to the right<h3>Object: Flash1 , Embed: Flash2 </h3>
+            <object id = "flash2" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0">
+                <param name="movie" value="flash1.swf"><param name="quality" value="high">
+                <embed src="flash2.swf" quality="high" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash">
+            </object>
+        </div>
+        <div style ="background-color : SILVER;">
+            This uses the embed tag<h3>Embed: Flash3</h3>
+            <embed id = "flash3" src="flash3.swf" quality="high" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash">
+        </div>
+        <div class="abs">
+            This is an ABS class
+        </div>
+        <div style ="background-color: YELLOW">
+            <h3>This is some other text tat follows the flash</h3>
+        </div>
+        <input type = "button" id = "newFlash" value = "Add new Object Tag">
+        <video width="320" height="240" controls preload id="video" tabindex="0" autoplay>
+            <source type="video/webm; codecs=";vp8,  vorbis";" src="pr6.ogv">
+            </source>
+            <source type="video/webm; codecs=";vp8,  vorbis";" src="pr6.webm">
+            </source>
+            <source type="video/ogg; codecs="theora,  vorbis" src="pr6.ogv">
+            </source>
+            <source src="http://diveintohtml5.org/i/pr6.mp4">
+            </source>
+            <object width="320" height="240" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" type="application/x-shockwave-flash">
+                <param value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" name="movie"><param value="true" name="allowfullscreen"><param value="config={"clip":{"url":"http://diveintohtml5.org/i/pr6.mp4","autoPlay":false,"autoBuffering":true}}" name="flashvars">
+                <p>
+                    Download video as <a href="i/pr6.mp4">MP4</a>, <a href="i/pr6.webm">WebM</a>, or <a href="i/pr6.ogv">Ogg</a>.
+                </p>
+            </object>
+        </video>
+        <div style ="background-color : MAROON; height : 600px;">
+            This is a very long div, to simulate a flash below the scroll fold.
+            <iframe style ="width : 300px; height : 300px !important; " src = "innerFrame.html">
+            </iframe>
+            <div style ="opacity : 0.9; width : 100px; height : 100px; background-color : RED">
+                This DIV has some opacity
+            </div>
+        </div>
+    </body>
+    <script>
+        window.axe = 1000;
+        
+        document.getElementById("newFlash").onclick = function(){
+            var x = document.createElement("div");
+            x.innerHTML = document.getElementById("flash1").parentNode.innerHTML;
+            document.body.appendChild(x);
+        };
+    </script>
+    <script>
+        window.addEventListener("load", function(){
+            
+        }, false);
+    </script>
+    <style>
+        #links table {
+            border: SOLID 1px BLACK;
+        }
+        
+        #links table td {
+            padding: 0.5em;
+            border: SOLID 1px BLACK;
+        }
+        
+        #links table th {
+            background-color: #ABCDEF;
+            border: SOLID 1px BLACK;
+            padding: 0.5em;
+        }
+    </style>
+    <div id = 'links' style ="right:0; bottom : 0; position:fixed;background-color : WHITE;">
+        <script src = "../extensions/bookmarklets/install.js?arg=something?arg1=otherthing" type="text/javascript">
+        </script>
+    </div>
+</html>

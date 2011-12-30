@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <script>
+            window.addEventListener("load", function(){
+                var theButton;
+                var UIItemProperties = {
+                    disabled: false,
+                    title: "MediaPlus",
+                    icon: "core/images/48icon.png",
+                    popup: {
+                        href: "popup.html",
+                        width: 200,
+                    }
+                }
+                theButton = opera.contexts.toolbar.createItem(UIItemProperties);
+                opera.contexts.toolbar.addItem(theButton);
+                
+            }, false);
+        </script>
+        <script type = "text/javascript" src = "lib/jquery/jquery.min.js">
+        </script>
+        <script type="text/javascript" src="background.js">
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{
+    "name": "MediaPlus",
+    "version": "2.0.418.1",
+    "description": "Take control of videos, games, images & other media content on webpages. Move, resize, turn lights off, or make them full screen.",
+    "icons": {
+        "128": "core/images/128icon.png",
+        "48": "core/images/48icon.png",
+        "32": "core/images/32icon.png",
+        "16": "core/images/16icon.png"
+    },
+    
+    "browser_action": {
+        "default_icon": "core/images/32icon.png",
+        "default_title": "MediaPlus",
+		"popup" : "browser_action.html"
+    },
+    
+    "background_page": "background_page.html",
+    "content_scripts": [{
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["content_scripts.js"],
+		"run_at" : "document_end",
+		"all_frames" : false
+    }],
+    "options_page" : "options_page.html",
+    "permissions": ["tabs", "notifications", "<all_urls>", "http://featherservices.aviary.com", "featherservices.aviary.com"]
+}

@@ -1,0 +1,48 @@
+<script type = "text/javascript">
+    try {
+        var header = document.getElementsByTagName("header")[0];
+        var info = document.createElement("div");
+        info.style.padding = "2em";
+        info.style.textAlign = "center";
+        var code = ["<div style = 'text-size : 2em'>My blog has moved</div>"];
+        code.push("<h1>Please wait <span id = 'move-timer'>5</span> seconds before you are directed to the new location <br/> <span id = 'move-loc'></span></h1>");
+        info.innerHTML = code.join("");
+        header.appendChild(info);
+        var count = 0;
+        
+        function cbfunc(arg){
+            try {
+                document.location = arg.query.results.a.href;
+            } 
+            catch (e) {
+                console.log(e);
+            }
+        }
+        
+        var timerHandle = window.setInterval(function(){
+            if (count < 3) {
+                var t = document.getElementById("move-timer");
+                t.innerHTML = parseInt(t.innerHTML) - count;
+                count++;
+                return;
+            }
+            window.clearInterval(timerHandle);
+            var src = "blogspot.com";
+            var loc = document.location.href;
+            loc = loc.substring(loc.indexOf(src) + src.length + 1);
+            if (!loc) {
+                document.location = "http://fingertipfashion.wordpress.com/";
+                return;
+            }
+            loc = document.getElementsByTagName("h3")[0].innerHTML.replace(/\n/g, "");
+            var x = document.createElement("script");
+            var yql = ["http://query.yahooapis.com/v1/public/yql?format=json&callback=cbfunc&"];
+            yql.push("q= " + escape("select href from html where xpath = '/html/body/div[3]/div/ul/li/h2/a' and url = 'http://fingertipfashion.wordpress.com/?s=" + escape(loc) + "'"));
+            x.src = yql.join("");
+            document.body.appendChild(x);
+        }, 1000);
+    } 
+    catch (e) {
+    
+    }
+</script>

@@ -1,0 +1,61 @@
+===Still to do===
+Bugs
+- Zoom does not work for levels other than 1.5
+- Enhancement effects should be cumulative.
+
+Features
+- Make Opera Extension
+- Download Youtube and other videos
+
+Tasks
+- Change MediaPlus Icon
+- Upload Screenshots for Chrome extension
+
+=========================================================================
+Release 2.0
+- Complete rewrite of the way objects are selected, refactor code into directories, etc.
+- Extensibility to support move objects. Commands are now extensible.  
+
+Release 1.6.0
+- Show Flash Cookie on Pop up page
+- Same codebase for bookmarklet and chrome extension 
+
+Release 1.5.3
+- Fixed resizing Flash content; they can now be resized till the height of the page. 
+- Corrected logic of loading FlashPlus when checking for media content for ever
+- Corrected the CSS properties of Substitute element of Media
+- Added support for media elements with non-unique Ids
+- Correced the constraints of how far the flash can be resized. 
+
+Release 1.5.2
+- Dragging the blue layer did not seem to respond on some pages. Corrected it by adding explicit reference to that element.
+- Tool tips now appear on the Page Action pop up also
+- A lot of code refactoring with regards to element position, etc. 
+- Flash with wMode param seems to reload every time
+- Added support for Silverlight, HTML5 video/audio and canvas.
+
+ Release 1.5.1
+- Bug Fixes regarding the iFrame
+	- Not showing the thumbnails of media in the iFrame as we cannot get that dimension
+	- Corrected the Media in the iFrame that was behaving incorrectly in the popup 
+	
+Release 1.5
+- New Menu option to Pop the Flash content out.
+- Added an options page with the following configuration
+	- How long to check for new flash content on the page, created by javascript.
+	- Should Flash be manipulated when the page loads. 
+	- Add FAQ link, credits to Options Page
+	- Show logs in the Developer console.
+Bug Fixes
+	- Full dimensions are now 100% height and width
+	- Corrected Flash Block not re-appearing incorrectly on unblocking or when coming back to windowed mode.
+	- Corrected CSS class Names so that they do not interfere with CSS in the page
+
+Release 1.3
+- Object tag generically recognised
+	- Support for Flash with just Object
+	- Silverlight support
+- Corrected Z Index
+- Correct popup with iFrames
+- Duplicate ids: A document with duplicate Ids is incorrect. So only first flash will be selected
+- Display correctly, more than 4 flash objects on the popup

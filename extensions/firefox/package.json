@@ -1,0 +1,12 @@
+{
+    "id": "jid1-64zk0LO394ZKag",
+    "version": "2.0.419.1",
+    "name": "mediaplus", 
+	"fullName" : "MediaPlus",
+	"description": "Take control of videos, games, images and other media content on webpages. Move them, resize them, colorize them, turn the lights off, or make them full screen.",
+	"homepage" : "http://nparashuram.com/projects/flashresizer.html",
+	"icon" : "data/core/images/32icon.png",
+	"icon64" : "data/core/images/128icon.png",
+    "license": "MPL 1.1/GPL 2.0/LGPL 2.1", 
+    "author": "Parashuram (http://nparashuram.com) <mediaplus@nparashuram.com>"
+}
