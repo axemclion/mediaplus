@@ -1,0 +1,28 @@
+{
+    "license": "MIT", 
+    "engines": {
+        "node": ">=0.6"
+    }, 
+    "description": "A browser extension", 
+    "repository": {
+        "url": "git://github.com/axemclion/mediaplus.git", 
+        "type": "git"
+    }, 
+    "author": "Parashuram <code@nparashuram.com>", 
+    "bugs": {
+        "url": "https://github.com/axemclion/mediaplus/issues"
+    }, 
+    "version": "3.0.0", 
+    "bundleDependencies": [], 
+    "scripts": {
+        "test": "grunt test", 
+        "start": "grunt"
+    }, 
+    "devDependencies": {
+        "grunt": "~0.3.12", 
+        "grunt-contrib": "*"
+    }, 
+    "main": "grunt.js", 
+    "id": "jid1-2X2ZdqqhPoTv1Q", 
+    "name": "MediaPlus"
+}
