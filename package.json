@@ -1,28 +1,27 @@
 {
-    "license": "MIT", 
-    "engines": {
-        "node": ">=0.6"
-    }, 
-    "description": "A browser extension", 
-    "repository": {
-        "url": "git://github.com/axemclion/mediaplus.git", 
-        "type": "git"
-    }, 
-    "author": "Parashuram <code@nparashuram.com>", 
-    "bugs": {
-        "url": "https://github.com/axemclion/mediaplus/issues"
-    }, 
-    "version": "3.0.0", 
-    "bundleDependencies": [], 
-    "scripts": {
-        "test": "grunt test", 
-        "start": "grunt"
-    }, 
-    "devDependencies": {
-        "grunt": "~0.3.12", 
-        "grunt-contrib": "*"
-    }, 
-    "main": "grunt.js", 
-    "id": "jid1-2X2ZdqqhPoTv1Q", 
-    "name": "MediaPlus"
+  "name": "MediaPlus",
+  "description": "A browser extension",
+  "version": "3.0.1",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "repository": {
+    "url": "git://github.com/axemclion/mediaplus.git",
+    "type": "git"
+  },
+  "author": "Parashuram <code@nparashuram.com>",
+  "bugs": {
+    "url": "https://github.com/axemclion/mediaplus/issues"
+  },
+  "scripts": {
+    "start": "grunt"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-clean": "~0.4.1",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-watch": "~0.4.4"
+  }
 }

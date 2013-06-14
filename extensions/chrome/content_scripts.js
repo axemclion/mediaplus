@@ -1,9 +1,9 @@
-(function(){
-    function notify(message, time){
+(function() {
+    function notify(message, time) {
         if (!message) {
             return;
         }
-        chrome.extension.sendRequest({
+        chrome.extension.sendMessage({
             "action": "notify",
             "data": {
                 "message": message,
@@ -11,26 +11,28 @@
             }
         });
     }
-    
-    function loadDependencies(files, callback){
-        chrome.extension.sendRequest({
+
+    function loadDependencies(files, callback) {
+        chrome.extension.sendMessage({
             "action": "load",
             "data": files
-        }, function(data){
+        }, function(data) {
             (typeof callback === "function") && callback();
         });
     }
-    
+
     var getBaseUrl = chrome.extension.getURL;
-    chrome.extension.onRequest.addListener(function(request, sender, sendResponse){
+    chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
         switch (request.action) {
             case "getNextAction":
                 if (typeof __FlashPlus__ === "undefined") {
+                    console.log(sender.tab ?
+                        "from a content script:" + sender.tab.url :
+                        "from the extension");
                     sendResponse({
                         "action": "loadFlashPlus"
-                    })
-                }
-                else {
+                    });
+                } else {
                     __FlashPlus__.stopPlugin(false);
                     var nextAction = __FlashPlus__.nextAction();
                     if (nextAction) {
@@ -38,8 +40,7 @@
                             "action": "showAction",
                             "data": nextAction
                         });
-                    }
-                    else {
+                    } else {
                         sendResponse({
                             "action": "showOptions"
                         });
@@ -50,7 +51,7 @@
                 loadDependencies({
                     "js": ["lib/jquery/jquery.min.js", "lib/jquery/jquery-ui.min.js", "core/js/FlashPlus.js"],
                     "css": ["core/css/FlashPlus.css", "lib/jquery/jquery-ui.css", "lib/jquery/ui.theme.css"]
-                }, function(){
+                }, function() {
                     __FlashPlus__.init({
                         "commands": {
                             "js": ["core/js/Tags.js", "core/extensions/pixastic.custom.js", "core/extensions/PixasticController.js", "core/extensions/Enhance.js"],
@@ -58,12 +59,12 @@
                         },
                         "env": {
                             "dependencies": loadDependencies,
-                            "image": function(url, img){
+                            "image": function(url, img) {
                                 img.setAttribute("src", getBaseUrl(url));
                             },
-                            "xhr": function(url, callback, options){
+                            "xhr": function(url, callback, options) {
                                 var xhr = new XMLHttpRequest();
-                                xhr.onreadystatechange = function(resp){
+                                xhr.onreadystatechange = function(resp) {
                                     if (xhr.readyState == 4) {
                                         callback(xhr.responseText);
                                     }
@@ -71,12 +72,12 @@
                                 xhr.open("GET", url, true);
                                 xhr.send();
                             },
-                            "newWindow": function(config){
-                                chrome.extension.sendRequest({
+                            "newWindow": function(config) {
+                                chrome.extension.sendMessage({
                                     "action": "newWindow",
                                     "data": config
-                                }, function(data){
-                                
+                                }, function(data) {
+
                                 });
                             }
                         },

@@ -1,17 +1,3 @@
-===Still to do===
-Bugs
-- Zoom does not work for levels other than 1.5
-- Enhancement effects should be cumulative.
-
-Features
-- Make Opera Extension
-- Download Youtube and other videos
-
-Tasks
-- Change MediaPlus Icon
-- Upload Screenshots for Chrome extension
-
-=========================================================================
 Release 2.0
 - Complete rewrite of the way objects are selected, refactor code into directories, etc.
 - Extensibility to support move objects. Commands are now extensible.  

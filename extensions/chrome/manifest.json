@@ -1,6 +1,8 @@
 {
     "name": "MediaPlus",
-    "version": "2.0.418.1",
+    "version": "2.1.0",
+    "manifest_version": 2,
+
     "description": "Take control of videos, games, images & other media content on webpages. Move, resize, turn lights off, or make them full screen.",
     "icons": {
         "128": "core/images/128icon.png",
@@ -8,20 +10,31 @@
         "32": "core/images/32icon.png",
         "16": "core/images/16icon.png"
     },
-    
+
     "browser_action": {
         "default_icon": "core/images/32icon.png",
         "default_title": "MediaPlus",
-		"popup" : "browser_action.html"
+        "default_popup": "browser_action.html"
     },
-    
-    "background_page": "background_page.html",
+
+    "background": {
+        "persistent": true,
+        "scripts": ["background.js"]
+    },
     "content_scripts": [{
-        "matches": ["http://*/*", "https://*/*"],
-        "js": ["content_scripts.js"],
-		"run_at" : "document_end",
-		"all_frames" : false
-    }],
-    "options_page" : "options_page.html",
-    "permissions": ["tabs", "notifications", "<all_urls>", "http://featherservices.aviary.com", "featherservices.aviary.com"]
+            "matches": ["http://*/*", "https://*/*"],
+            "js": ["content_scripts.js"],
+            "run_at": "document_end",
+            "all_frames": false
+        }
+    ],
+    "homepage_url": "http://nparashuram.com/projects/flashresizer.html",
+    "incognito": "split",
+    "offline_enabled": true,
+    "omnibox": {
+        "keyword": "aString"
+    },
+    "options_page": "options_page.html",
+    "permissions": ["tabs", "notifications", "<all_urls>", "http://featherservices.aviary.com", "featherservices.aviary.com"],
+    "web_accessible_resources": ["/core/images/*"]
 }
