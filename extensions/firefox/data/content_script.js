@@ -100,7 +100,7 @@
             cssNode.rel = 'stylesheet';
             cssNode.href = getBaseUrl(files.css[i]);
             cssNode.media = 'screen';
-            document.getElementsByTagName("head")[0].appendChild(cssNode);
+            document.body.appendChild(cssNode);
         }
         
         var count = 0;

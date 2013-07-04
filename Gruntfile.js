@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 		connect: {
 			all: {
 				options: {
-					base: '.',
+					base: 'test',
 					port: 9999
 				}
 			}
@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 			all: ["./bin"]
 		},
 		copy: {
-			'chrome': {
+			chrome: {
 				files: [{
 						cwd: 'extensions/chrome',
 						src: '**',
@@ -31,12 +31,35 @@ module.exports = function(grunt) {
 						expand: true
 					}
 				]
+			},
+			firefox: {
+				files: [{
+						cwd: 'extensions/firefox',
+						src: '**',
+						dest: 'bin/firefox/',
+						expand: true
+					}, {
+						cwd: 'core',
+						src: '**/*',
+						dest: 'bin/firefox/data/core',
+						expand: true
+					}, {
+						cwd: 'lib',
+						src: '**',
+						dest: 'bin/firefox/data/lib',
+						expand: true
+					}
+				]
 			}
 		},
 		watch: {
 			chrome: {
 				files: ['extensions/chrome/**', 'core/**'],
-				tasks: ['copy']
+				tasks: ['copy:chrome']
+			},
+			firefox: {
+				files: ['extensions/firefox/**', 'core/**'],
+				tasks: ['copy:firefox']
 			}
 		}
 	});
@@ -47,4 +70,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('dev', ['clean', 'copy', 'connect', 'watch']);
+	grunt.registerTask('chrome', ['copy:chrome', 'connect', 'watch:chrome']);
+	grunt.registerTask('firefox', ['copy:firefox', 'connect', 'watch:firefox']);
 };
