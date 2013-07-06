@@ -42,7 +42,7 @@
                                 "image": getImage,
                                 "dependencies": loadDependencies,
                                 "newWindow": function(config){
-                                    var n = window.open(config.url || undefined, config.name, config.specs);
+                                    var n = window.open("about:blank", config.name, config.specs);
                                     if (!config.content) {
                                         return;
                                     }

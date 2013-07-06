@@ -50,6 +50,25 @@ module.exports = function(grunt) {
 						expand: true
 					}
 				]
+			},
+			opera: {
+				files: [{
+						cwd: 'extensions/opera',
+						src: '**',
+						dest: 'bin/opera/',
+						expand: true
+					}, {
+						cwd: 'core',
+						src: '**/*',
+						dest: 'bin/opera/core',
+						expand: true
+					}, {
+						cwd: 'lib',
+						src: '**',
+						dest: 'bin/opera/lib',
+						expand: true
+					}
+				]
 			}
 		},
 		watch: {
@@ -60,6 +79,10 @@ module.exports = function(grunt) {
 			firefox: {
 				files: ['extensions/firefox/**', 'core/**'],
 				tasks: ['copy:firefox']
+			},
+			opera: {
+				files: ['extensions/opera/**', 'core/**'],
+				tasks: ['copy:opera']
 			}
 		}
 	});
@@ -72,4 +95,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('dev', ['clean', 'copy', 'connect', 'watch']);
 	grunt.registerTask('chrome', ['copy:chrome', 'connect', 'watch:chrome']);
 	grunt.registerTask('firefox', ['copy:firefox', 'connect', 'watch:firefox']);
+	grunt.registerTask('opera', ['copy:opera', 'connect', 'watch:opera']);
+
 };
