@@ -26,10 +26,10 @@
         switch (request.action) {
             case "getNextAction":
                 if (typeof __FlashPlus__ === "undefined") {
-                    console.log(sender.tab ?
+                    /*console.log(sender.tab ?
                         "from a content script:" + sender.tab.url :
                         "from the extension");
-                    sendResponse({
+                    */sendResponse({
                         "action": "loadFlashPlus"
                     });
                 } else {
@@ -54,8 +54,8 @@
                 }, function() {
                     __FlashPlus__.init({
                         "commands": {
-                            "js": ["core/js/Tags.js", "core/extensions/pixastic.custom.js", "core/extensions/PixasticController.js", "core/extensions/Enhance.js"],
-                            "css": ["core/extensions/PixasticController.css"]
+                            "js": ["core/js/Tags.js"],
+                            "css": []
                         },
                         "env": {
                             "dependencies": loadDependencies,

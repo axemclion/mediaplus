@@ -108,7 +108,7 @@ __FlashPlus__.tags = (function($){
                     "icon": "core/images/close.png",
                     "tooltip": "Close this panel",
                     "action": function(){
-                        __FlashPlus__.toggle();
+                        //__FlashPlus__.toggle();
                     }
                 },
                 "moveResize": {
@@ -282,6 +282,7 @@ __FlashPlus__.tags = (function($){
                         elem.css(originalPosition).css("margin", 0);
                         // TODO: Does not work if element.style has !important.
                         // Remove those
+                        $("body").addClass('flashPlus-fullscreen-body');
                         elem.addClass("flashPlus-fullscreen");
                         window.scrollTo(0, 0);
                         return {
@@ -289,6 +290,8 @@ __FlashPlus__.tags = (function($){
                             "message": "Restored to original size",
                             "action": function(){
                                 elem.removeClass("flashPlus-fullscreen");
+                                $("body").removeClass('flashPlus-fullscreen-body');
+
                             }
                         }
                     }

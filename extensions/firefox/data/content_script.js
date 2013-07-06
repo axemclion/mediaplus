@@ -50,8 +50,8 @@
                         },
                         "notify": notify,
                         "commands": {
-                            "js": ["lib/jquery/jquery-ui.min.js", "core/extensions/pixastic.custom.js", "core/extensions/PixasticController.js", "core/extensions/Enhance.js", "core/js/Tags.js"],
-                            "css": ["core/extensions/PixasticController.css", "lib/jquery/jquery-ui.css", "lib/jquery/ui.theme.css"]
+                            "js": ["lib/jquery/jquery-ui.min.js", "core/js/Tags.js"],
+                            "css": ["lib/jquery/jquery-ui.css", "lib/jquery/ui.theme.css"]
                         }
                     });
                 });

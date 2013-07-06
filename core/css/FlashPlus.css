@@ -59,6 +59,10 @@
     z-index: 2147483647;
 }
 
+.flashPlus-fullscreen-body{
+    overflow: hidden !important;
+}
+
 .flashPlus-fullscreen {
     top: 0 !important;
     left: 0 !important;

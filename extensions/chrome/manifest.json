@@ -1,6 +1,6 @@
 {
     "name": "MediaPlus",
-    "version": "2.1.0",
+    "version": "2.1.2",
     "manifest_version": 2,
 
     "description": "Take control of videos, games, images & other media content on webpages. Move, resize, turn lights off, or make them full screen.",
@@ -34,7 +34,6 @@
     "omnibox": {
         "keyword": "aString"
     },
-    "options_page": "options_page.html",
-    "permissions": ["tabs", "notifications", "<all_urls>", "http://featherservices.aviary.com", "featherservices.aviary.com"],
+    "permissions": ["tabs", "notifications", "<all_urls>"],
     "web_accessible_resources": ["/core/images/*"]
 }

@@ -127,8 +127,8 @@
         }, function(){
             __FlashPlus__.init({
                 "commands": {
-                    "js": [getBaseUrl("core/js/Tags.js"), getBaseUrl("core/extensions/pixastic.custom.js"), getBaseUrl("core/extensions/PixasticController.js"), getBaseUrl("core/extensions/Enhance.js")],
-                    "css": [getBaseUrl("core/extensions/PixasticController.css"), ]
+                    "js": [getBaseUrl("core/js/Tags.js")],
+                    "css": []
                 },
                 "env": {
                     "dependencies": loadDependencies,

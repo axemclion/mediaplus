@@ -77,8 +77,8 @@
                             },
                             "notify": notify,
                             "commands": {
-                                "js": ["core/js/Tags.js", "core/extensions/pixastic.custom.js", "core/extensions/PixasticController.js", "core/extensions/Enhance.js"],
-                                "css": ["core/extensions/PixasticController.css"]
+                                "js": ["core/js/Tags.js"],
+                                "css": []
                             }
                         });
                     });

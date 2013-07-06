@@ -96,5 +96,5 @@ module.exports = function(grunt) {
 	grunt.registerTask('chrome', ['copy:chrome', 'connect', 'watch:chrome']);
 	grunt.registerTask('firefox', ['copy:firefox', 'connect', 'watch:firefox']);
 	grunt.registerTask('opera', ['copy:opera', 'connect', 'watch:opera']);
-
+	grunt.registerTask('default', 'copy');
 };
