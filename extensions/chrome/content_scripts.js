@@ -31,11 +31,11 @@
                 m.style["color"] = "black";
                 document.body.appendChild(m);
             }
-            if (!content) {
+            if (!message) {
                 m.style.display = "none";
                 return;
             }
-            m.innerHTML = content;
+            m.innerHTML = message;
             m.style.display = "block";
             if (time !== true) {
                 window.__flashPlus__messageHideTimer = window.setTimeout(function(){
