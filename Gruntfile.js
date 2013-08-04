@@ -15,60 +15,80 @@ module.exports = function(grunt) {
 		copy: {
 			chrome: {
 				files: [{
-						cwd: 'extensions/chrome',
-						src: '**',
-						dest: 'bin/chrome/',
-						expand: true
-					}, {
-						cwd: 'core',
-						src: '**/*',
-						dest: 'bin/chrome/core',
-						expand: true
-					}, {
-						cwd: 'lib',
-						src: '**',
-						dest: 'bin/chrome/lib',
-						expand: true
-					}
-				]
-			},
-			firefox: {
-				files: [{
-						cwd: 'extensions/firefox',
-						src: '**',
-						dest: 'bin/firefox/',
-						expand: true
-					}, {
-						cwd: 'core',
-						src: '**/*',
-						dest: 'bin/firefox/data/core',
-						expand: true
-					}, {
-						cwd: 'lib',
-						src: '**',
-						dest: 'bin/firefox/data/lib',
-						expand: true
-					}
-				]
+					cwd: 'extensions/chrome',
+					src: '**',
+					dest: 'bin/chrome/',
+					expand: true
+				}, {
+					cwd: 'core',
+					src: '**/*',
+					dest: 'bin/chrome/core',
+					expand: true
+				}, {
+					cwd: 'lib',
+					src: '**',
+					dest: 'bin/chrome/lib',
+					expand: true
+				}]
 			},
 			opera: {
 				files: [{
-						cwd: 'extensions/opera',
-						src: '**',
-						dest: 'bin/opera/',
-						expand: true
-					}, {
-						cwd: 'core',
-						src: '**/*',
-						dest: 'bin/opera/core',
-						expand: true
-					}, {
-						cwd: 'lib',
-						src: '**',
-						dest: 'bin/opera/lib',
-						expand: true
-					}
-				]
+					cwd: 'extensions/chrome',
+					src: '**',
+					dest: 'bin/opera/',
+					expand: true
+				}, {
+					cwd: 'core',
+					src: '**/*',
+					dest: 'bin/opera/core',
+					expand: true
+				}, {
+					cwd: 'lib',
+					src: '**',
+					dest: 'bin/opera/lib',
+					expand: true
+				}, {
+					cwd: 'extensions/opera',
+					src: '**',
+					dest: 'bin/opera/',
+					expand: true
+				}]
+			},
+			firefox: {
+				files: [{
+					cwd: 'extensions/firefox',
+					src: '**',
+					dest: 'bin/firefox/',
+					expand: true
+				}, {
+					cwd: 'core',
+					src: '**/*',
+					dest: 'bin/firefox/data/core',
+					expand: true
+				}, {
+					cwd: 'lib',
+					src: '**',
+					dest: 'bin/firefox/data/lib',
+					expand: true
+				}]
+			},
+			opera14: {
+				files: [{
+					cwd: 'extensions/opera14',
+					src: '**',
+					dest: 'bin/opera14/',
+					expand: true
+				}, {
+					cwd: 'core',
+					src: '**/*',
+					dest: 'bin/opera14/core',
+					expand: true
+				}, {
+					cwd: 'lib',
+					src: '**',
+					dest: 'bin/opera14/lib',
+					expand: true
+				}]
 			}
 		},
 		watch: {
@@ -81,8 +101,12 @@ module.exports = function(grunt) {
 				tasks: ['copy:firefox']
 			},
 			opera: {
-				files: ['extensions/opera/**', 'core/**'],
+				files: ['extensions/chrome/**', 'extensions/opera/**' ,'core/**'],
 				tasks: ['copy:opera']
+			},
+			opera14: {
+				files: ['extensions/opera14/**', 'core/**'],
+				tasks: ['copy:opera14']
 			}
 		}
 	});
@@ -95,6 +119,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('dev', ['clean', 'copy', 'connect', 'watch']);
 	grunt.registerTask('chrome', ['copy:chrome', 'connect', 'watch:chrome']);
 	grunt.registerTask('firefox', ['copy:firefox', 'connect', 'watch:firefox']);
+	grunt.registerTask('opera14', ['copy:opera14', 'connect', 'watch:opera14']);
 	grunt.registerTask('opera', ['copy:opera', 'connect', 'watch:opera']);
 	grunt.registerTask('default', 'copy');
 };

@@ -3,13 +3,47 @@
         if (!message) {
             return;
         }
-        chrome.extension.sendMessage({
-            "action": "notify",
-            "data": {
-                "message": message,
-                "time": time
+        if (typeof window.webkitNotifications !== 'undefined'){
+            chrome.extension.sendMessage({
+                "action": "notify",
+                "data": {
+                    "message": message,
+                    "time": time
+                }
+            });
+        } else { // In case this is used by Opera
+            window.clearTimeout(window.__flashPlus__messageHideTimer);
+            var m = document.getElementById("___flashPlus-message");
+            if (!m) {
+                m = document.createElement("div");
+                m.setAttribute("id", "___flashPlus-message");
+                m.style["right"] = "0";
+                m.style["top"] = 0;
+                m.style["backgroundColor"] = "#FFFFE1";
+                m.style["padding"] = "1em";
+                m.style["borderRadius"] = "0 0 0px 10px";
+                m.style["position"] = "fixed";
+                m.style["boxShadow"] = "0 0 5px 5px GRAY";
+                m.style["fontSize"] = "14px";
+                m.style["zIndex"] = "2147483647"
+                m.style["border"] = "SOLID 3px BLACK";
+                m.style["text-align"] = "center";
+                m.style["color"] = "black";
+                document.body.appendChild(m);
             }
-        });
+            if (!content) {
+                m.style.display = "none";
+                return;
+            }
+            m.innerHTML = content;
+            m.style.display = "block";
+            if (time !== true) {
+                window.__flashPlus__messageHideTimer = window.setTimeout(function(){
+                    m.style.display = "none";
+                }, time || 4000);
+            }
+            return m;
+        }
     }
 
     function loadDependencies(files, callback) {
