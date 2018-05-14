@@ -38,7 +38,8 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
         case "newWindow":
             var config = request.data;
             chrome.windows.create({
-                "url": config.url
+                "url": config.url,
+                "type": "popup"
             }, function(window) {
                 if (!config.content) {
                     return true;
