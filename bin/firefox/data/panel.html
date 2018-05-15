@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+    <head>
+        <title>MediaPlus</title>
+        <style>
+            body {
+                font-family: Geneva, Helvetica, Verdana, Arial, sans-serif;
+                font-size: 16px;
+                background-color: #FFFFF1;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .panels {
+                text-align: center;
+            }
+            
+            .panel {
+                display: none;
+                text-align: center;
+            }
+            
+            h3 {
+                text-align: center;
+            }
+            
+            button {
+                padding: 0.5em;
+                width: 90%;
+                margin: 1em 5%;
+                display: block;
+                margin: 0 auto;
+            }
+            
+            .footer {
+                font-size: 0.8em;
+                border-top: SOLID 1px black;
+                text-align: center;
+                font-size: 12px;
+                margin-top: 1em;
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <img src = "core/images/32icon.png" style ="float:left;"/><h3>MediaPlus</h3>
+        </div>
+        <div id = "loading" style ="text-align : center">
+            Loading
+        </div>
+        <div id = "loadError" style ="display:none; font-size : 0.8em; padding : 1em">
+            Page not loaded. 
+            <br/>
+            Wait for the page to load completly or Refresh the page. 
+        </div>
+        <div class = "panels">
+            <div id = "loadFlashPlus" class = "panel">
+                <button id = "initFlashPlus">
+                    Start MediaPlus
+                </button>
+				<sub>Click this after the full page has loaded.</sub>
+            </div>
+            <div id = "showAction" class = "panel">
+                <button id = "doAction">
+                    Restore to previous state
+                </button>
+            </div>
+            <div id = "showOptions" class = "panel">
+                <button id = "rescan">
+                    Rescan Page for Media
+                </button>
+                <button id = "stopFlashPlus">
+                    Stop Plugin
+                </button>
+            </div>
+        </div>
+        <div class = "footer">
+            <a href = 'http://nparashuram.com/projects/flashresizer.html'>MediaPlus Help</a>
+            | <a href = 'http://nparashuram.com/contact.html'>Support/Bugs</a>
+        </div>
+    </body>
+</html>

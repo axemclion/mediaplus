@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+ id="http://nparashuram.com/projecs/flashresizer.html" version="2.1.2">
+    <name short="MediaPlus">
+        MediaPlus
+    </name>
+    <description>
+        Take control of videos, games, images and other media content on webpages. Move them, resize them, colorize them, turn the lights off, or make them full screen.
+    </description>
+    <author href="http://nparashuram.com"
+     email="mediaplus@nparashuram.com">
+        Parashuram
+    </author>
+    <icon src="core/images/128icon.png"/>
+    <license href="http://www.opensource.org/licenses/mit-license.php">
+        Licensed under the MIT license
+    </license>
+</widget>
