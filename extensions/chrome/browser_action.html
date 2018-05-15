@@ -1,15 +1,37 @@
 <!doctype html5>
 <html>
     <head>
-        <title>MediaPlus</title>
+        <title>Media+</title>
         <style>
             body {
                 width: 200px;
                 font-family: Geneva, Helvetica, Verdana, Arial, sans-serif;
                 font-size: 16px;
-                background-color: #FFFFF1;
+                background-color: #000;
+                color:#bdc3c7;
                 padding: 0;
                 margin: 0;
+            }
+
+            a {
+                color:#d35400;
+            }
+            
+            button {
+                padding: 0.5em;
+                width: 90%;
+                display: block;
+                background: #d35400;
+                color: #fff;
+                border: 0;
+                margin: .5rem 5%;
+            }
+
+            a:hover,
+            a:focus,
+            button:hover,
+            button:focus {
+                opacity:.5;
             }
             
             .panels {
@@ -22,20 +44,13 @@
             }
             
             h3 {
+                margin:.5rem;
                 text-align: center;
             }
-            
-            button {
-                padding: 0.5em;
-                width: 90%;
-                margin: 1em 5%;
-                display: block;
-                margin: 0 auto;
-            }
-            
+             
             .footer {
-                font-size: 0.8em;
-                border-top: SOLID 1px black;
+                border-top: 1px solid #080c10;
+                padding: 1rem 0;
                 text-align: center;
                 font-size: 12px;
                 margin-top: 1em;
@@ -47,43 +62,40 @@
     </head>
     <body>
         <div>
-            <img src = "core/images/16icon.png" style ="float:left"/><h3>MediaPlus</h3>
+            <img src="core/images/32icon.png" style ="float:left;margin:0 .5rem"/><h3>Media+</h3>
         </div>
-        <div id = "loading" style ="text-align : center">
+        <div id="loading" style ="text-align : center">
             Loading
         </div>
-        <div id = "loadError" style ="display:none; font-size : 0.8em; padding : 1em">
-            Page not loaded. 
+        <div id="loadError" style ="display:none; font-size : 0.8em; padding : 1em">
+            Page not loaded.
             <br/>
-            Wait for the page to load completly or Refresh the page. 
+            Wait for the page to load completly or Refresh the page.
         </div>
-        <div class = "panels">
-            <div id = "loadFlashPlus" class = "panel">
-                <button id = "initFlashPlus">
-                    Start MediaPlus
+        <div class="panels">
+            <div id="loadFlashPlus" class="panel">
+                <button id="initFlashPlus">
+                Start Media+
                 </button>
             </div>
-            <div id = "showAction" class = "panel">
-                <button id = "doAction">
-                    Restore to previous state
+            <div id="showAction" class="panel">
+                <button id="doAction">
+                Restore to previous state
                 </button>
             </div>
-            <div id = "showOptions" class = "panel">
-                <button id = "rescan">
-                    Rescan Page for Media
+            <div id="showOptions" class="panel">
+                <button id="rescan">
+                Rescan Page for Media
                 </button>
-                <button id = "stopFlashPlus">
-                    Stop Plugin
+                <button id="stopFlashPlus">
+                Stop Plugin
                 </button>
             </div>
         </div>
-        <div class = "footer">
-            <a href = 'http://nparashuram.com/projects/flashresizer.html'>MediaPlus Help</a>
-            | <a href = 'http://nparashuram.com/contact.html'>Support/Bugs</a>
+        <div class="footer">
+            <a href="https://github.com/a2nt/Media+/issues">Support/Bugs</a>
         </div>
-        <script src = "lib/jquery/jquery.min.js">
-        </script>
-        <script src = "browser_action.js">
-        </script>
+        <script src="lib/jquery/jquery.min.js"></script>
+        <script src="browser_action.js"></script>
     </body>
 </html>

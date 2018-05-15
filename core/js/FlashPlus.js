@@ -4,11 +4,13 @@
  */
 jQuery.noConflict();
 if (typeof __FlashPlus__ === "undefined") {
-    __FlashPlus__ = (function($){
-        var config = {}, nextAction = null, selectedElement = null, notify = function(){
-        };
+    __FlashPlus__ = (function($) {
+        var config = {},
+            nextAction = null,
+            selectedElement = null,
+            notify = function() {};
         var tags = tags || {};
-        
+
         /**
          * Initialized the element selector engine. Adds the required selection
          * divs.
@@ -21,14 +23,14 @@ if (typeof __FlashPlus__ === "undefined") {
             $("body").append($("<div id = '_flashPlus_Selector_right' class = 'flashPlus-selector'></div>"));
             $("body").append($("<div id = '_flashPlus_Selector_left' class = 'flashPlus-selector'></div>"));
         }
-        
-        $(".flashPlus-elem").live("mouseenter", function(){
+
+        $(".flashPlus-elem").live("mouseenter", function() {
             if (config.suspended || nextAction) {
                 return;
             }
             var elem = $(this);
             var offset = elem.offset();
-            
+
             // Draw the selector lines
             $("#_flashPlus_Selector_top").css({
                 "top": offset.top - 4,
@@ -50,7 +52,7 @@ if (typeof __FlashPlus__ === "undefined") {
                 "left": offset.left - 2,
                 "width": elem.outerWidth() + 4
             }).show();
-            
+
             // If element is already the selected element, then the
             // commands would have already een drawn
             if (!selectedElement || selectedElement.attr("id") != elem.attr("id")) {
@@ -69,15 +71,15 @@ if (typeof __FlashPlus__ === "undefined") {
                 commandsContainer.append(elem.data("flashPlusTag"));
                 $("div#_flashPlus_Selector_commands_").empty().append(commandsContainer);
             }
-            
+
             $("div#_flashPlus_Selector_commands_").css({
-                "left": offset.left + 3,
-                "top": offset.top + elem.outerHeight() + 4
+                "left": offset.left,
+                "top": offset.top + elem.outerHeight()
             }).show();
             selectedElement = elem;
         });
-        
-        $("div#_flashPlus_Selector_commands_ img").live("click", function(){
+
+        $("div#_flashPlus_Selector_commands_ img").live("click", function() {
             $("div.flashPlus-selector").hide();
             $("div#_flashPlus_Selector_commands_").hide();
             var tag = tags[selectedElement.data("flashPlusTag")];
@@ -89,20 +91,20 @@ if (typeof __FlashPlus__ === "undefined") {
                 flashPlus.notify(nextAction.onAction, 2000);
             }
         });
-        
-        $(document).bind("scroll", unselectElem).bind("keyup", function(e){
+
+        $(document).bind("scroll", unselectElem).bind("keyup", function(e) {
             // console.log("Captured in extension", e.keyCode);
-            if (e.keyCode === 27) {// escape
+            if (e.keyCode === 27) { // escape
                 doNextAction();
             }
         });
-        
-        function unselectElem(){
+
+        function unselectElem() {
             selectedElement = null;
             $(".flashPlus-selector, #_flashPlus_Selector_commands_").hide();
         }
-        
-        function doNextAction(){
+
+        function doNextAction() {
             unselectElem();
             if (nextAction && nextAction.action && typeof nextAction.action === "function") {
                 flashPlus.notify(nextAction.message);
@@ -110,39 +112,38 @@ if (typeof __FlashPlus__ === "undefined") {
             }
             return nextAction;
         }
-        
+
         var flashPlus = {
-            "getTags": function(){
+            "getTags": function() {
                 return tags;
             },
-            "registerTag": function(tag){
+            "registerTag": function(tag) {
                 // console.log("Registering Tag", tag.name);
                 tag.init().addClass("flashPlus-elem").data("flashPlusTag", tag.name);
                 tags[tag.name] = tag;
             },
-            
+
             /**
              * Initialized Flash Plus
              *
              * @param {Object}
              *            options - [base, commands, message]
              */
-            "init": function(options){
+            "init": function(options) {
                 $.extend(config, options);
                 var head = document.getElementsByTagName("head")[0] || document.documentElement;
                 config.env.dependencies(options.commands);
                 config.suspended = false;
                 flashPlus.notify = config.notify || console.log ||
-                function(){
-                };
+                    function() {};
                 flashPlus.notify("Move your mouse over videos, images or flash to start the plugin", 10000);
             },
-            
+
             /**
              * Returns the next action if any. If there is no next action,
              * returns null
              */
-            "nextAction": function(action){
+            "nextAction": function(action) {
                 if (typeof action !== "undefined") {
                     nextAction = action;
                 }
@@ -153,8 +154,8 @@ if (typeof __FlashPlus__ === "undefined") {
                 }
                 return null;
             },
-            
-            "refreshTags": function(){
+
+            "refreshTags": function() {
                 unselectElem();
                 config.suspended = false;
                 for (tag in tags) {
@@ -162,20 +163,19 @@ if (typeof __FlashPlus__ === "undefined") {
                 }
                 flashPlus.notify("Rescanned the page for Media Content");
             },
-            
-            "stopPlugin": function(canStop){
+
+            "stopPlugin": function(canStop) {
                 if (canStop === false) {
                     config.suspended = false;
                     flashPlus.notify("MediaPlus started again");
-                }
-                else {
+                } else {
                     config.suspended = true;
                     flashPlus.notify("MediaPlus stopped. Click on MediaPlus to activate it again");
                 }
                 unselectElem();
             },
-            
-            "setImage": function(url, img){
+
+            "setImage": function(url, img) {
                 return config.env.image(url, img);
             }
         };

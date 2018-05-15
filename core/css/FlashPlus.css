@@ -6,28 +6,26 @@
     margin: 0;
     position: absolute;
     border: SOLID 1px BLUE;
-    box-shadow: 0 0 5px 2px #ABCDEF;
+    box-shadow: 0 0 5px 2px #d35400;
 }
 
 .flashPlus-commands {
     display: none;
     position: absolute;
     margin: -1px;
-    box-shadow: 0 0 5px 2px #222222;
     z-index: 2147483647;
-    background-color: WHITE;
+    background-color: #000;
     border-radius: 0 0 10px 10px;
     padding: 0.4em;
     left: 1.5em;
-    border: SOLID 2px BLUE;
-    font-size: 10px;
-    color: black;
+    font-size: 12px;
+    color: #fff;
 }
 
 .flashPlus-commands img {
     width: 24px;
     height: 24px;
-    margin: 0 0.1em;
+    margin: .25rem .5rem;
     vertical-align: middle;
     cursor: pointer;
     display: inline;
@@ -39,7 +37,7 @@
 .flashPlus-commands img:hover {
     -webkit-transform: scale(1.3);
     -moz-transform: scale(1.3);
-    transform: scale(1.3)
+    transform: scale(1.3);
 }
 
 .flashPlus-proxy {
@@ -59,7 +57,7 @@
     z-index: 2147483647;
 }
 
-.flashPlus-fullscreen-body{
+.flashPlus-fullscreen-body {
     overflow: hidden !important;
 }
 
@@ -83,7 +81,7 @@
 }
 
 .flashPlus-original {
-    background-color: #ABCDEF;
+    background-color: #d35400;
     border: none;
 }
 
