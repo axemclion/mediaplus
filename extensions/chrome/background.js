@@ -44,7 +44,7 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
                 "left": 14,
                 "top": 14,
                 "width": 640,
-                "height": 480
+                "height": 400
             }, function(window) {
                 if (!config.content) {
                     return true;
