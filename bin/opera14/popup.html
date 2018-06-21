@@ -1,0 +1,104 @@
+<!doctype html5>
+<html>
+    <head>
+        <title>MediaPlus</title>
+        <style>
+            body {
+                width: 200px;
+                font-family: Geneva, Helvetica, Verdana, Arial, sans-serif;
+                font-size: 16px;
+                background-color: #FFFFF1;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .panels {
+                text-align: center;
+            }
+            
+            .panel {
+                display: none;
+                text-align: center;
+            }
+            
+            h3 {
+                text-align: center;
+            }
+            
+            button {
+                padding: 0.5em;
+                width: 90%;
+                margin: 1em 5%;
+                display: block;
+            }
+            
+            .footer {
+                font-size: 0.8em;
+                border-top: SOLID 1px black;
+                text-align: center;
+                font-size: 12px;
+                margin-top: 1em;
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h3>MediaPlus</h3>
+        </div>
+        <div id = "loading" style ="text-align : center">
+            Loading
+        </div>
+        <div class = "panels">
+            <div id = "loadFlashPlus" class = "panel">
+                <button id = "initFlashPlus">
+                    Start MediaPlus
+                </button>
+            </div>
+            <div id = "showAction" class = "panel">
+                <button id = "doAction">
+                    Restore to previous state
+                </button>
+            </div>
+            <div id = "showOptions" class = "panel">
+                <button id = "rescan">
+                    Rescan Page for Media
+                </button>
+                <button id = "stopFlashPlus">
+                    Stop Plugin
+                </button>
+            </div>
+        </div>
+        <div class = "footer">
+            <a href = 'http://nparashuram.com/projects/flashresizer.html'>MediaPlus Help</a>
+            | <a href = 'http://nparashuram.com/contact.html'>Support/Bugs</a>
+        </div>
+        <script src = "lib/jquery/jquery.min.js">
+        </script>
+        <script>
+            var theport = null;
+            opera.extension.onmessage = function(event){
+                switch (event.data.action) {
+                    case "loadFlashPlus":
+                    case "showAction":
+                    case "showOptions":
+                    default:
+                        $("#loading").hide();
+                        $("#" + event.data.action).show();
+                        theport = event.ports[0];
+                        theport.onmessage = function(){
+                        };
+                }
+            }
+            
+            $("button").live("click", function(){
+                theport.postMessage({
+                    "action": $(this).attr("id")
+                });
+                window.close();
+            });
+        </script>
+    </body>
+</html>
