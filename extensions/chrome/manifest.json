@@ -37,7 +37,7 @@
   "web_accessible_resources": [
     {
       "resources": ["core/images/*"],
-      "matches": ["<all_urls>"]
+      "matches": ["http://*/*", "https://*/*"]
     }
   ]
 }
