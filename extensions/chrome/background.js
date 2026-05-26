@@ -1,55 +1,49 @@
-chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     switch (request.action) {
         case "notify":
-            if (window.webkitNotifications.checkPermission() === 0) {
-                var x = window.webkitNotifications.createNotification(chrome.extension.getURL("core/images/128icon.png"), "MediaPlus", request.data.message);
-                x.show();
+            chrome.notifications.create({
+                type: "basic",
+                iconUrl: chrome.runtime.getURL("core/images/128icon.png"),
+                title: "MediaPlus",
+                message: request.data.message
+            }, function(notifId) {
                 if (request.data.time !== true) {
-                    window.setTimeout(function() {
-                        x.cancel()
+                    setTimeout(function() {
+                        chrome.notifications.clear(notifId);
                     }, request.data.time || 5000);
                 }
-            }
+            });
             sendResponse();
             break;
         case "load":
             var files = request.data;
-            chrome.tabs.getSelected(null, function(tab) {
-                for (var i = 0; i < files.css.length; i++) {
-                    chrome.tabs.insertCSS(tab.id, {
-                        "file": files.css[i]
-                    }, function(e) {});
-                }
-
-                function loadScript(loadedFileIndex) {
-                    if (loadedFileIndex < files.js.length) {
-                        chrome.tabs.executeScript(tab.id, {
-                            "file": files.js[loadedFileIndex]
-                        }, function() {
-                            loadScript(loadedFileIndex + 1);
-                        });
-                    } else {
-                        sendResponse();
-                    }
-                }
-                loadScript(0);
+            var tabId = sender.tab.id;
+            var cssPromises = files.css.map(function(file) {
+                return chrome.scripting.insertCSS({ target: { tabId: tabId }, files: [file] });
             });
-            break;
+            Promise.all(cssPromises).then(function() {
+                return files.js.reduce(function(chain, file) {
+                    return chain.then(function() {
+                        return chrome.scripting.executeScript({ target: { tabId: tabId }, files: [file] });
+                    });
+                }, Promise.resolve());
+            }).then(function() {
+                sendResponse();
+            });
+            return true;
         case "newWindow":
             var config = request.data;
-            chrome.windows.create({
-                "url": config.url
-            }, function(window) {
-                if (!config.content) {
-                    return true;
+            chrome.windows.create({ url: config.url }, function(win) {
+                if (config.content) {
+                    chrome.scripting.executeScript({
+                        target: { tabId: win.tabs[0].id },
+                        func: function(html) { document.body.innerHTML = html; },
+                        args: [config.content]
+                    });
                 }
-                var code = [""];
-                code.push("document.body.innerHTML='", config.content.replace(/\n/g, " ").replace(/\'/g, "\\\'"), "';");
-                chrome.tabs.executeScript(window.tabs[0].id, {
-                    "code": code.join("")
-                });
+                sendResponse();
             });
-            break;
+            return true;
     }
     return true;
 });

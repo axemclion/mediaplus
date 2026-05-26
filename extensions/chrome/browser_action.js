@@ -9,7 +9,9 @@ window.setTimeout(function() {
         }, 10000);
     }
 }, 5000);
-chrome.tabs.getSelected(null, function(tab) {
+
+chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    var tab = tabs[0];
     chrome.tabs.sendMessage(tab.id, {
         "action": "getNextAction"
     }, function(response) {
@@ -32,11 +34,10 @@ chrome.tabs.getSelected(null, function(tab) {
     });
 });
 
-$("button").live("click", function() {
+$("button").on("click", function() {
     var self = $(this);
-    chrome.tabs.getSelected(null, function(tab) {
-        console.log("Tab Clicked");
-        chrome.tabs.sendMessage(tab.id, {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        chrome.tabs.sendMessage(tabs[0].id, {
             "action": self.attr("id")
         }, function(response) {
             window.close();

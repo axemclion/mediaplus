@@ -1,7 +1,7 @@
 {
   "name": "MediaPlus",
   "version": "2.1.3",
-  "manifest_version": 2,
+  "manifest_version": 3,
 
   "description": "Take control of videos, games, images & other media content on webpages. Move, resize, turn lights off, or make them full screen.",
   "icons": {
@@ -11,15 +11,14 @@
     "16": "core/images/16icon.png"
   },
 
-  "browser_action": {
+  "action": {
     "default_icon": "core/images/32icon.png",
     "default_title": "MediaPlus",
     "default_popup": "browser_action.html"
   },
 
   "background": {
-    "persistent": true,
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
@@ -31,10 +30,15 @@
   ],
   "homepage_url": "http://nparashuram.com/projects/flashresizer.html",
   "incognito": "split",
-  "offline_enabled": true,
   "omnibox": {
     "keyword": "mediaplus"
   },
-  "permissions": ["<all_urls>"],
-  "web_accessible_resources": ["/core/images/*"]
+  "permissions": ["activeTab", "scripting", "notifications"],
+  "host_permissions": ["<all_urls>"],
+  "web_accessible_resources": [
+    {
+      "resources": ["core/images/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
