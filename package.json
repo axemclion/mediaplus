@@ -4,7 +4,7 @@
   "version": "3.0.1",
   "license": "MIT",
   "engines": {
-    "node": ">=0.10"
+    "node": ">=16"
   },
   "repository": {
     "url": "git://github.com/axemclion/mediaplus.git",
@@ -15,14 +15,20 @@
     "url": "https://github.com/axemclion/mediaplus/issues"
   },
   "scripts": {
-    "start": "./node_modules/.bin/grunt"
+    "start":          "node scripts/build.js",
+    "build":          "node scripts/clean.js && node scripts/build.js",
+    "build:chrome":   "node scripts/build.js chrome",
+    "build:firefox":  "node scripts/build.js firefox",
+    "build:opera":    "node scripts/build.js opera",
+    "build:opera14":  "node scripts/build.js opera14",
+    "clean":          "node scripts/clean.js",
+    "dev":            "node scripts/dev.js",
+    "chrome":         "node scripts/dev.js chrome",
+    "firefox":        "node scripts/dev.js firefox",
+    "opera":          "node scripts/dev.js opera",
+    "opera14":        "node scripts/dev.js opera14"
   },
   "devDependencies": {
-    "grunt": "^1.5.3",
-    "grunt-cli": "^1.4.3",
-    "grunt-contrib-clean": "^2.0.1",
-    "grunt-contrib-connect": "^3.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-watch": "^1.1.0"
+    "chokidar": "^3.6.0"
   }
 }
